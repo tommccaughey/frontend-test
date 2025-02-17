@@ -1,37 +1,24 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-} from 'react-native';
-import ProfessionalDesignNative from "./app/designs/professional-design-native"
+import { NavigationContainer } from "@react-navigation/native"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import ProfessionalDesignNative from "./src/pages/professional-design-native"
+import HeartRate from "./src/pages/heartRate"
+
+export type RootStackParamList = {
+  Home: undefined
+  HeartRate: undefined
+}
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <ProfessionalDesignNative />
-    </SafeAreaView>
-  );
-};
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={ProfessionalDesignNative} options={{ title: "Gesis Smart Health App" }} />
+        <Stack.Screen name="HeartRate" component={HeartRate} options={{ title: "Heart Rate" }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    padding: 16,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#00000',
-    marginTop: 20,
-    marginBottom: 16,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#00000',
-    marginBottom: 16,
-  },
-});
-
-export default App;
+export default App
