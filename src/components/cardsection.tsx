@@ -36,7 +36,7 @@ const CardSection = ({ title, content, onPress, showChart, chartData }: CardSect
                   backgroundGradientFrom: "#ffffff",
                   backgroundGradientTo: "#ffffff",
                   decimalPlaces: 0,
-                  color: (opacity = 1) => `rgba(0, 122, 255, ${opacity})`,
+                  color: (opacity = 1) => `rgba(255, 105, 180, ${opacity})`, // pink color
                   labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                   style: {
                     borderRadius: 16,
@@ -46,6 +46,7 @@ const CardSection = ({ title, content, onPress, showChart, chartData }: CardSect
                 style={{
                   marginVertical: 8,
                   borderRadius: 16,
+                  
                 }}
               />
             </View>

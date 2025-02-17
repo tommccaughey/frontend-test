@@ -1,15 +1,15 @@
-import type React from "react"
-import { Text, StyleSheet, ScrollView, Dimensions, View } from "react-native"
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack"
-import CardSection from "../components/cardsection"
+import React from "react";
+import { Text, StyleSheet, ScrollView, Dimensions, View } from "react-native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import CardSection from "../components/cardsection";
 import ProgressNative from "../../components/ui/progress-native";
-import type { RootStackParamList } from "../../App"
+import { RootStackParamList } from "../../App";
 
-const { width, height } = Dimensions.get("window")
+const { width, height } = Dimensions.get("window");
 
 type ProfessionalDesignNativeProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, "Home">
-}
+  navigation: NativeStackNavigationProp<RootStackParamList, "Home">;
+};
 
 const ProfessionalDesignNative: React.FC<ProfessionalDesignNativeProps> = ({ navigation }) => {
   const stepsChartData = {
@@ -17,13 +17,14 @@ const ProfessionalDesignNative: React.FC<ProfessionalDesignNativeProps> = ({ nav
     datasets: [
       {
         data: [7000, 8500, 6800, 9200, 7600, 8000, 8439],
+        
       },
     ],
-  }
+  };
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Gesis Smart Health App</Text>
+      <Text style={styles.title}>Stay healthy!</Text>
       <CardSection
         title="Heart Rate"
         onPress={() => navigation.navigate("HeartRate")}
@@ -36,6 +37,7 @@ const ProfessionalDesignNative: React.FC<ProfessionalDesignNativeProps> = ({ nav
       />
       <CardSection
         title="Steps"
+        onPress={() => navigation.navigate("Steps")}
         showChart={true}
         chartData={stepsChartData}
         content={
@@ -45,29 +47,24 @@ const ProfessionalDesignNative: React.FC<ProfessionalDesignNativeProps> = ({ nav
           </>
         }
       />
-
-<CardSection
-        title="Nutrition Tracker"
+      <CardSection
+        title="Sleep"
         content={
-          <View style={styles.listItem}>
-            <Text style={styles.listItem}>
-              <Text>Calories</Text>
-              <Text style={styles.listItemDetail}>1,200 / 2,000</Text>
-            </Text>
-            <ProgressNative value={60} />
-            <Text style={styles.listItem}>
-              <Text>Protein</Text>
-              <Text style={styles.listItemDetail}>75g / 100g</Text>
-            </Text>
-            <ProgressNative value={75} />
-            <Text style={styles.listItem}>
-              <Text>Carbs</Text>
-              <Text style={styles.listItemDetail}>150g / 250g</Text>
-            </Text>
-            <ProgressNative value={60} />
-          </View>
+          <>
+            <Text style={styles.cardContentText}>8h 30m</Text>
+            <Text style={styles.cardSubContent}>Deep sleep: 2h 30m</Text>
+          </>
         }
       />
+      
+      <CardSection
+        title="Calories"
+        content={
+          <>
+            <Text style={styles.cardContentText}>1,200</Text>
+            <Text style={styles.cardSubContent}>Goal: 2,000</Text>
+          </>
+        }/>
     </ScrollView>
   );
 };
@@ -82,6 +79,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     margin: 20,
+    color: "pink",
   },
   cardContentText: {
     fontSize: 20,
@@ -99,9 +97,6 @@ const styles = StyleSheet.create({
   listItemDetail: {
     fontWeight: "bold",
   },
-  },
+});
 
-)
-
-export default ProfessionalDesignNative
-
+export default ProfessionalDesignNative;
